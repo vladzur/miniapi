@@ -1,5 +1,5 @@
-## MiniApi
+## miniapi
 
-Mini Api Test using league/route, league/fractal and illuminate/database
+**miniapi** is a proof of concept of how to use a router, a JSON presentation layer and an ORM to build a simple and robust API Rest
 
-The main idea is to create a simple api with routing, JSON presentation layer and an ORM
+miniapi is using league/route, league/fractal and illuminate/database
