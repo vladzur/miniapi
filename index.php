@@ -3,9 +3,6 @@ require 'vendor/autoload.php';
 require 'app/bootstrap.php';
 
 use vladzur\miniapi\Controller\BooksController;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Symfony\Component\HttpFoundation\Request;
 
 //Dependency injector
 $container = new League\Container\Container;

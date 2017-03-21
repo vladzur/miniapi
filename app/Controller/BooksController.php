@@ -16,21 +16,22 @@ class BooksController
         $books = Book::all();
         $fractal = new Manager();
         $resource = new Fractal\Resource\Collection($books, new BookTransformer);
-        $response->withHeader('Content-Type', 'text/plain');
+        $response->withHeader('Content-type', 'application/json');
         $response->getBody()->write($fractal->createData($resource)->toJson());
         return $response;
     }
 
     public function store(Request $request, Response $response)
     {
+        $params = $request->getParsedBody();        
         $book = new Book;
-        $book->title = $_REQUEST['title'];
-        $book->author = $_REQUEST['author'];
-        $book->ISBN = $_REQUEST['ISBN'];
+        $book->title = $params['title'];
+        $book->author = $params['author'];
+        $book->ISBN = $params['ISBN'];
         $book->save();
         $fractal = new Manager();
         $resource = new Fractal\Resource\Item($book, new BookTransformer);
-        $response->withHeader('Content-Type', 'text/plain');
+        $response->withHeader('Content-type', 'application/json');
         $response->getBody()->write($fractal->createData($resource)->toJson());
         return $response;
     }
