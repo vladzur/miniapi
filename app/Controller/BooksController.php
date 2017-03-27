@@ -1,5 +1,4 @@
-<?php
-namespace vladzur\miniapi\Controller;
+<?php namespace vladzur\miniapi\Controller;
 
 use vladzur\miniapi\Model\Book;
 use vladzur\miniapi\Transformer\BookTransformer;
@@ -23,7 +22,7 @@ class BooksController
 
     public function store(Request $request, Response $response)
     {
-        $params = $request->getParsedBody();        
+        $params = $request->getParsedBody();
         $book = new Book;
         $book->title = $params['title'];
         $book->author = $params['author'];
