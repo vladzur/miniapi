@@ -6,9 +6,9 @@ $capsule = new Capsule;
 $capsule->addConnection([
     'driver'    => 'mysql',
     'host'      => 'localhost',
-    'database'  => 'bookstore',
-    'username'  => 'root',
-    'password'  => 'r2d2c3po',
+    'database'  => 'mydatabase',
+    'username'  => 'myuser',
+    'password'  => 'mysecret',
     'charset'   => 'utf8',
     'collation' => 'utf8_unicode_ci',
     'prefix'    => '',
