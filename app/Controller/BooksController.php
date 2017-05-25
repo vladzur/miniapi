@@ -1,11 +1,12 @@
-<?php namespace vladzur\miniapi\Controller;
+<?php
+namespace Vladzur\MiniApi\Controller;
 
-use vladzur\miniapi\Model\Book;
-use vladzur\miniapi\Transformer\BookTransformer;
 use League\Fractal;
 use League\Fractal\Manager;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Vladzur\MiniApi\Model\Book;
+use Vladzur\MiniApi\Transformer\BookTransformer;
 
 class BooksController
 {

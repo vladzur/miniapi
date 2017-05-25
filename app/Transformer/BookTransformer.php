@@ -1,6 +1,7 @@
-<?php namespace vladzur\miniapi\Transformer;
+<?php
+namespace Vladzur\MiniApi\Transformer;
 
-use vladzur\miniapi\Model\Book;
+use Vladzur\MiniApi\Model\Book;
 use League\Fractal;
 
 class BookTransformer extends Fractal\TransformerAbstract

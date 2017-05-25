@@ -1,31 +1,28 @@
 <?php
+use Illuminate\Database\Capsule\Manager as Capsule;
+
 require 'vendor/autoload.php';
-require 'app/bootstrap.php';
 
-use vladzur\miniapi\Controller\BooksController;
+$dotenv = new Dotenv\Dotenv(__DIR__);
+$dotenv->load();
+$dotenv->required(['DBHOST', 'DBNAME', 'DBUSER', 'DBPASS']);
 
-//Dependency injector
-$container = new League\Container\Container;
+$capsule = new Capsule;
+$capsule->addConnection([
+    'driver'    => 'mysql',
+    'host'      => getenv('DBHOST'),
+    'database'  => getenv('DBNAME'),
+    'username'  => getenv('DBUSER'),
+    'password'  => getenv('DBPASS'),
+    'charset'   => 'utf8',
+    'collation' => 'utf8_unicode_ci',
+    'prefix'    => '',
+]);
 
-//Share injections of Request and Response
-$container->share('response', Zend\Diactoros\Response::class);
-$container->share('request', function () {
-    return Zend\Diactoros\ServerRequestFactory::fromGlobals(
-        $_SERVER, $_GET, $_POST, $_COOKIE, $_FILES
-    );
-});
-//Share output class dependency
-$container->share('emitter', Zend\Diactoros\Response\SapiEmitter::class);
+// Make this Capsule instance available globally via static methods...
+$capsule->setAsGlobal();
 
-//New Router object with dependencies
-$router = new League\Route\RouteCollection($container);
+// Setup the Eloquent ORM...
+$capsule->bootEloquent();
 
-//Setup Routes
-$router->get('/api/books', [new BooksController, 'index']);
-$router->post('/api/books', [new BooksController, 'store']);
-
-//Dispatcher
-$router->dispatch($container->get('request'), $container->get('response'));
-
-//Output response
-$container->get('emitter')->emit($container->get('response'));
+require 'route.php';
