@@ -5,11 +5,10 @@ use League\Fractal;
 use League\Fractal\Manager;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Vladzur\MiniApi\Controller;
 use Vladzur\MiniApi\Model\Book;
 use Vladzur\MiniApi\Transformer\BookTransformer;
 
-class BooksController extends Controller
+class BooksController
 {
 
     public function index(Request $request, Response $response)

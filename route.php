@@ -1,5 +1,4 @@
 <?php
-
 //Dependency injector
 $container = new League\Container\Container;
 
@@ -17,8 +16,9 @@ $container->share('emitter', Zend\Diactoros\Response\SapiEmitter::class);
 $router = new League\Route\RouteCollection($container);
 
 //Setup Routes
-$router->get('/api/books', [new BooksController, 'index']);
-$router->post('/api/books', [new BooksController, 'store']);
+$router->get('/', function(){
+    return "Hola Mundo";
+});
 
 //Dispatcher
 $router->dispatch($container->get('request'), $container->get('response'));
