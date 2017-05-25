@@ -4,8 +4,8 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 require 'vendor/autoload.php';
 
 $dotenv = new Dotenv\Dotenv(__DIR__);
-$dotenv->required(['DBHOST', 'DBNAME', 'DBUSER', 'DB_PASS']);
 $dotenv->load();
+$dotenv->required(['DBHOST', 'DBNAME', 'DBUSER', 'DBPASS']);
 
 $capsule = new Capsule;
 $capsule->addConnection([
