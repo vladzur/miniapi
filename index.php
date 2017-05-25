@@ -2,7 +2,6 @@
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 require 'vendor/autoload.php';
-require 'router.php';
 
 $dotenv = new Dotenv\Dotenv(__DIR__);
 $dotenv->required(['DBHOST', 'DBNAME', 'DBUSER', 'DB_PASS']);
@@ -26,3 +25,4 @@ $capsule->setAsGlobal();
 // Setup the Eloquent ORM...
 $capsule->bootEloquent();
 
+require 'route.php';
