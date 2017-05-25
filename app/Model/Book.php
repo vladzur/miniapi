@@ -1,4 +1,5 @@
-<?php namespace vladzur\miniapi\Model;
+<?php
+namespace Vladzur\MiniApi\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
